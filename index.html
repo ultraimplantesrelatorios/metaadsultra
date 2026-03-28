@@ -4,192 +4,695 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Relatório Semanal | Ultra Implantes</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  background: #f4f6f8;
-  color: #1a1a1a;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-}
-
-.header {
-  background: #ffffff;
-  border-bottom: 1px solid #eee;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
-  height: 60px;
-}
-
-h1 {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-h2 {
-  margin-bottom: 10px;
-}
-
-.card {
-  background: #ffffff;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.kpi {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  border-left: 5px solid #ff6600;
-}
-
-.kpi h3 {
-  font-size: 14px;
-  color: #777;
-}
-
-.kpi p {
-  font-size: 26px;
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-.analysis {
-  margin-top: 15px;
-  padding: 15px;
-  background: #fff7f2;
-  border-left: 4px solid #ff6600;
-  border-radius: 8px;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px;
-  color: #777;
-}
-
-/* RESPONSIVO */
-@media(max-width: 600px){
-  .header-content {
-    flex-direction: column;
-    align-items: flex-start;
+  :root {
+    --orange: #f97316;
+    --orange-light: #fff5ee;
+    --orange-mid: #fff0e4;
+    --gray-dark: #4b5563;
+    --gray-mid: #6b7280;
+    --gray-soft: #8f949f;
+    --gray-bg: #f2f3f5;
+    --slate: #5b6068;
+    --white: #ffffff;
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 12px;
+    --shadow-card: 0 18px 40px rgba(0,0,0,0.06);
+    --shadow-sm: 0 4px 14px rgba(0,0,0,0.04);
   }
-}
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--gray-bg);
+    color: var(--gray-dark);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  /* ── HEADER ─────────────────────────────── */
+  .header {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    margin-bottom: 28px;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(249,115,22,0.12), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(91,96,104,0.08), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .header-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 0.9fr;
+    gap: 40px;
+    padding: 40px 44px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+
+  .logo {
+    height: 58px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--orange-light);
+    border: 1px solid rgba(249,115,22,0.18);
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+
+  .header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 34px;
+    line-height: 1.2;
+    color: var(--gray-dark);
+    max-width: 480px;
+    font-weight: 400;
+  }
+
+  .header-desc {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray-mid);
+    max-width: 460px;
+  }
+
+  .header-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-self: center;
+  }
+
+  .hcard {
+    padding: 22px 24px;
+    border-radius: 26px;
+  }
+
+  .hcard.orange {
+    background: linear-gradient(135deg, var(--orange-mid), var(--white));
+    border: 1px solid rgba(249,115,22,0.12);
+  }
+
+  .hcard.slate {
+    background: var(--slate);
+    color: var(--white);
+  }
+
+  .hcard .hc-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .hcard.orange .hc-label { color: var(--orange); }
+  .hcard.slate .hc-label  { color: rgba(255,255,255,0.65); }
+
+  .hcard .hc-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .hcard.orange .hc-title { color: var(--gray-dark); }
+  .hcard.slate .hc-title  { color: var(--white); }
+
+  .hcard .hc-body {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .hcard.orange .hc-body { color: var(--gray-mid); }
+  .hcard.slate .hc-body  { color: rgba(255,255,255,0.75); }
+
+  /* ── KPI GRID ─────────────────────────────── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .kpi-card {
+    background: var(--white);
+    border-radius: 26px;
+    padding: 24px 22px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .kpi-bar {
+    height: 5px;
+    width: 48px;
+    background: var(--orange);
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .kpi-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .kpi-value {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--gray-dark);
+    margin-top: 10px;
+    line-height: 1;
+  }
+
+  .kpi-sub {
+    font-size: 12px;
+    color: var(--gray-mid);
+    margin-top: 8px;
+  }
+
+  /* ── CAMPAIGNS ─────────────────────────────── */
+  .campaigns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .campaign-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0,0,0,0.04);
+    overflow: hidden;
+  }
+
+  .campaign-head {
+    padding: 24px 28px;
+    background: linear-gradient(to right, var(--orange-light), var(--white));
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .campaign-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  .tag.orange { background: var(--orange); color: white; }
+  .tag.gray   { background: #edf0f3; color: var(--gray-mid); }
+
+  .campaign-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gray-dark);
+    line-height: 1.3;
+  }
+
+  .campaign-body { padding: 28px; }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .metric {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.025);
+  }
+
+  .metric-label {
+    font-size: 12px;
+    color: var(--gray-soft);
+  }
+
+  .metric-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gray-dark);
+    letter-spacing: -0.01em;
+    margin-top: 6px;
+  }
+
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .analysis-box {
+    border-radius: var(--radius-lg);
+    padding: 18px;
+  }
+
+  .analysis-box.neutral { background: #f7f8fa; }
+  .analysis-box.orange  { background: var(--orange-light); }
+
+  .analysis-head {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+
+  .analysis-box.neutral .analysis-head { color: var(--gray-soft); }
+  .analysis-box.orange .analysis-head  { color: var(--orange); }
+
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #5f6670;
+  }
+
+  .dot {
+    flex-shrink: 0;
+    width: 9px; height: 9px;
+    margin-top: 4px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+
+  /* ── INSIGHTS / STRATEGY ─────────────────── */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .insights-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .title-bar {
+    width: 5px; height: 38px;
+    background: var(--orange);
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  .section-title h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gray-dark);
+  }
+
+  .insight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 20px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+
+  .insight-num {
+    flex-shrink: 0;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .insight-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #5f6670;
+    padding-top: 6px;
+  }
+
+  .strategy-card {
+    background: linear-gradient(135deg, var(--slate), #717784);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    color: white;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+  }
+
+  .strategy-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .strategy-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .strategy-title {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .strategy-intro {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 20px;
+  }
+
+  .strategy-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.88);
+    backdrop-filter: blur(6px);
+  }
+
+  /* ── FOOTER ─────────────────────────────── */
+  footer {
+    text-align: center;
+    font-size: 13px;
+    color: var(--gray-mid);
+    background: var(--white);
+    border-radius: 28px;
+    border: 1px solid rgba(249,115,22,0.14);
+    padding: 18px 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+  }
+
+  /* ── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 900px) {
+    .header-inner   { grid-template-columns: 1fr; }
+    .kpi-grid       { grid-template-columns: repeat(2, 1fr); }
+    .campaigns-grid { grid-template-columns: 1fr; }
+    .bottom-grid    { grid-template-columns: 1fr; }
+    .analysis-grid  { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .wrap { padding: 16px 14px 40px; }
+    .header-inner { padding: 24px 22px; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .header-title { font-size: 26px; }
+    .metrics-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
-
 <body>
 
-<header class="header">
-  <div class="container header-content">
-    <!-- COLOQUE SUA LOGO AQUI -->
-    <img src="https://via.placeholder.com/150x60?text=Ultra" class="logo">
+<div class="wrap">
 
-    <div>
-      <h1>Relatório de Performance</h1>
-      <p>Ultra Implantes • Semana Atual</p>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div>
+        <div class="brand">
+          <!-- Logo puxada do GitHub: substitua pela URL raw do seu repositório -->
+          <img
+            src="https://raw.githubusercontent.com/seu-usuario/seu-repo/main/logo.png"
+            class="logo"
+            alt="Ultra Implantes"
+          >
+        </div>
+
+        <div class="badge">Relatório semanal • Osasco</div>
+
+        <h1 class="header-title">Desempenho das campanhas com leitura executiva clara, elegante e alinhada à marca.</h1>
+
+        <p class="header-desc">
+          Este painel reúne resultados, análise e próximos passos das campanhas ativas,
+          mantendo uma apresentação premium para uso interno e reuniões estratégicas.
+        </p>
+      </div>
+
+      <div class="header-cards">
+        <div class="hcard orange">
+          <p class="hc-label">Leitura principal</p>
+          <p class="hc-title">Qualidade e escala convivendo bem</p>
+          <p class="hc-body">A campanha de cadastro reforça intenção real. A campanha de mensagens amplia presença e volume de contatos.</p>
+        </div>
+        <div class="hcard slate">
+          <p class="hc-label">Posicionamento</p>
+          <p class="hc-title">Base sólida para crescimento</p>
+          <p class="hc-body">O momento é de preservar o que performa, refinar abordagem comercial e aumentar eficiência no atendimento.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- VISÃO GERAL -->
-  <section class="card">
-    <h2>Visão Geral</h2>
-    <p>
-      As campanhas apresentam consistência na geração de leads qualificados,
-      com destaque para volume de contatos iniciados e custo controlado.
-    </p>
-  </section>
+  </header>
 
   <!-- KPIs -->
-  <section class="grid">
-
-    <div class="kpi">
-      <h3>Leads</h3>
-      <p id="leads">73</p>
+  <section class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-bar"></div>
+      <div class="kpi-label">Leads gerados</div>
+      <div class="kpi-value">73</div>
+      <div class="kpi-sub">Campanha de cadastro</div>
     </div>
-
-    <div class="kpi">
-      <h3>Custo por Lead</h3>
-      <p>R$ 22,55</p>
+    <div class="kpi-card">
+      <div class="kpi-bar"></div>
+      <div class="kpi-label">Conversas iniciadas</div>
+      <div class="kpi-value">350</div>
+      <div class="kpi-sub">Campanha de mensagens</div>
     </div>
-
-    <div class="kpi">
-      <h3>Investimento</h3>
-      <p>R$ 1.646,09</p>
+    <div class="kpi-card">
+      <div class="kpi-bar"></div>
+      <div class="kpi-label">Novos contatos</div>
+      <div class="kpi-value">351</div>
+      <div class="kpi-sub">Soma das duas campanhas</div>
     </div>
-
-    <div class="kpi">
-      <h3>Alcance</h3>
-      <p>22.059</p>
+    <div class="kpi-card">
+      <div class="kpi-bar"></div>
+      <div class="kpi-label">Investimento total</div>
+      <div class="kpi-value">R$ 6.924</div>
+      <div class="kpi-sub">Período analisado</div>
     </div>
+  </section>
+
+  <!-- CAMPAIGNS -->
+  <section class="campaigns-grid">
+
+    <!-- Campanha 1 -->
+    <article class="campaign-card">
+      <div class="campaign-head">
+        <div class="campaign-tags">
+          <span class="tag orange">Geração de leads via formulário</span>
+          <span class="tag gray">Leads mais qualificados</span>
+        </div>
+        <h2 class="campaign-name">Cadastro Todos os Vídeos</h2>
+      </div>
+      <div class="campaign-body">
+        <div class="metrics-grid">
+          <div class="metric"><div class="metric-label">Leads gerados</div><div class="metric-value">73</div></div>
+          <div class="metric"><div class="metric-label">Custo por lead</div><div class="metric-value">R$ 22,55</div></div>
+          <div class="metric"><div class="metric-label">Orçamento diário</div><div class="metric-value">R$ 150,00</div></div>
+          <div class="metric"><div class="metric-label">Valor investido</div><div class="metric-value">R$ 1.646</div></div>
+          <div class="metric"><div class="metric-label">Impressões</div><div class="metric-value">39.959</div></div>
+          <div class="metric"><div class="metric-label">Alcance</div><div class="metric-value">22.059</div></div>
+          <div class="metric"><div class="metric-label">Contatos por mensagem</div><div class="metric-value">21</div></div>
+          <div class="metric"><div class="metric-label">Novos contatos</div><div class="metric-value">17</div></div>
+        </div>
+        <div class="analysis-grid">
+          <div class="analysis-box neutral">
+            <div class="analysis-head">Análise</div>
+            <ul class="bullet-list">
+              <li><span class="dot"></span><span>Bom desempenho na geração de leads via formulário.</span></li>
+              <li><span class="dot"></span><span>Volume de conversões consistente com o investimento.</span></li>
+              <li><span class="dot"></span><span>Público com interesse real — formulário exige maior intenção.</span></li>
+              <li><span class="dot"></span><span>Estrutura sólida para captação qualificada.</span></li>
+            </ul>
+          </div>
+          <div class="analysis-box orange">
+            <div class="analysis-head">Recomendações</div>
+            <ul class="bullet-list">
+              <li><span class="dot"></span><span>Manter a estrutura atual dado o bom desempenho.</span></li>
+              <li><span class="dot"></span><span>Testar variações de criativos para ampliar volume.</span></li>
+              <li><span class="dot"></span><span>Avaliar otimizações no formulário sem perder qualidade.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Campanha 2 -->
+    <article class="campaign-card">
+      <div class="campaign-head">
+        <div class="campaign-tags">
+          <span class="tag orange">Conversas iniciadas via WhatsApp</span>
+          <span class="tag gray">Volume e escala</span>
+        </div>
+        <h2 class="campaign-name">Nova | MSG | Wpp | LL — Cópia</h2>
+      </div>
+      <div class="campaign-body">
+        <div class="metrics-grid">
+          <div class="metric"><div class="metric-label">Resultados</div><div class="metric-value">350</div></div>
+          <div class="metric"><div class="metric-label">Custo por resultado</div><div class="metric-value">R$ 15,08</div></div>
+          <div class="metric"><div class="metric-label">Valor investido</div><div class="metric-value">R$ 5.278</div></div>
+          <div class="metric"><div class="metric-label">Impressões</div><div class="metric-value">168.612</div></div>
+          <div class="metric"><div class="metric-label">Alcance</div><div class="metric-value">74.345</div></div>
+          <div class="metric"><div class="metric-label">Contatos por mensagem</div><div class="metric-value">404</div></div>
+          <div class="metric"><div class="metric-label">Novos contatos</div><div class="metric-value">334</div></div>
+        </div>
+        <div class="analysis-grid">
+          <div class="analysis-box neutral">
+            <div class="analysis-head">Análise</div>
+            <ul class="bullet-list">
+              <li><span class="dot"></span><span>Forte volume de interações e alcance expressivo.</span></li>
+              <li><span class="dot"></span><span>Alto número de novos contatos gerados.</span></li>
+              <li><span class="dot"></span><span>Estratégia eficaz para ampliar a base de potenciais clientes.</span></li>
+              <li><span class="dot"></span><span>Boa performance em escala.</span></li>
+            </ul>
+          </div>
+          <div class="analysis-box orange">
+            <div class="analysis-head">Recomendações</div>
+            <ul class="bullet-list">
+              <li><span class="dot"></span><span>Manter e escalar gradualmente o investimento.</span></li>
+              <li><span class="dot"></span><span>Criar fluxos de atendimento para qualificação dos contatos.</span></li>
+              <li><span class="dot"></span><span>Explorar automações para ganho de eficiência.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
 
   </section>
 
-  <!-- CAMPANHA -->
-  <section class="card">
-    <h2>Campanha: Cadastro Todos os Vídeos</h2>
+  <!-- INSIGHTS + STRATEGY -->
+  <section class="bottom-grid">
 
-    <ul>
-      <li>Impressões: 39.959</li>
-      <li>Contatos por mensagem: 21</li>
-      <li>Novos contatos: 17</li>
-    </ul>
+    <div class="insights-card">
+      <div class="section-title">
+        <div class="title-bar"></div>
+        <h2>Principais insights</h2>
+      </div>
+      <div class="insight-item"><div class="insight-num">1</div><p class="insight-text">A campanha de cadastro demonstra boa capacidade de geração de leads qualificados.</p></div>
+      <div class="insight-item"><div class="insight-num">2</div><p class="insight-text">O modelo de formulário contribui para captar usuários com maior nível de interesse.</p></div>
+      <div class="insight-item"><div class="insight-num">3</div><p class="insight-text">A campanha de mensagens apresenta alto engajamento e volume de contatos iniciados.</p></div>
+      <div class="insight-item"><div class="insight-num">4</div><p class="insight-text">As duas campanhas cumprem bem seus objetivos em estratégias diferentes e complementares.</p></div>
+    </div>
 
-    <div class="analysis">
-      <h3>Análise</h3>
-      <p>
-        Campanha com bom desempenho na geração de leads via formulário.
-        Volume consistente com o investimento realizado.
+    <div class="strategy-card">
+      <div class="strategy-header">
+        <div class="strategy-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+          </svg>
+        </div>
+        <h2 class="strategy-title">Direcionamento estratégico</h2>
+      </div>
+      <p class="strategy-intro">
+        O desenho ideal para a próxima semana é simples: manter conversão, melhorar tratamento dos contatos e organizar o funil para ganho real de resultado comercial.
       </p>
+      <div class="strategy-item">Preservar a campanha de cadastro como base de captação qualificada.</div>
+      <div class="strategy-item">Escalar a campanha de mensagens com controle de atendimento para não perder oportunidade.</div>
+      <div class="strategy-item">Organizar o funil comercial para separar contato iniciado de lead realmente aproveitado.</div>
+      <div class="strategy-item">Acompanhar semanalmente custo, volume, qualidade e evolução do atendimento comercial.</div>
     </div>
+
   </section>
 
-</main>
+  <!-- FOOTER -->
+  <footer>
+    © Ultra Implantes • Relatório Automatizado — Apresentação formatada com identidade visual da marca.
+  </footer>
 
-<footer class="footer">
-  <p>© Ultra Implantes • Relatório Automatizado</p>
-</footer>
-
-<script>
-// EXEMPLO DE INTERAÇÃO
-console.log("Relatório carregado com sucesso");
-
-// Aqui depois dá pra puxar dados automático
-</script>
+</div>
 
 </body>
 </html>
